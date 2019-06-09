@@ -4,7 +4,7 @@ function rootReducer(state = { tweets: [] }, action) {
     switch (action.type) {
         case actions.ADD:
             return Object.assign({}, state, {
-                tweets: [...state, action.data]
+                tweets: [...state.tweets, action.data]
             });
         case actions.REMOVE:
             return Object.assign({}, state, {

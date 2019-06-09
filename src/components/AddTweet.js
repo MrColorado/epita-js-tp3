@@ -21,7 +21,7 @@ class AddTweet extends Component {
         event.preventDefault();
         const id = uuidv1();
         const author_name = document.getElementById('author_name').value;
-        const text = document.getElementById('content').value;
+        const text = document.getElementById('text').value;
         store.dispatch(addTweet({id, author_name, text}));
     }
 
