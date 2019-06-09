@@ -1,19 +1,20 @@
 import React from "react";
 import {connect} from "react-redux";
+
 import store from "../store/index"
 import { removeTweet } from '../actions/tweet'
 
 const TweetList = ({tweets}) => {
     return (
         <ul>
-            {tweets.map(tweet =>
-                <li key={tweet.id}>
+            { tweets.map(tweet =>
+                <li key={ tweet.id }>
                     <h3>
-                        Tweet number : {tweet.id} wrote by {tweet.author_name}
-                        <button onClick={() => store.dispatch(removeTweet({id: tweet.id}))}>X</button>
+                        Tweet number : { tweet.id } wrote by { tweet.author_name }
+                        <button onClick={ () => store.dispatch(removeTweet({ id: tweet.id })) }>Remove</button>
                     </h3>
                     <p>
-                        {tweet.text}
+                        { tweet.text }
                     </p>
                 </li>
             )}

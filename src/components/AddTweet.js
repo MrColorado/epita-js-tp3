@@ -2,22 +2,17 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import uuidv1 from 'uuid'
 
-import { addTweet } from '../actions/tweet';
 import store from '../store/index';
-
-function mapDispatchToProps(dispatch) {
-    return {
-        addTweet: (tweet) => dispatch(addTweet(tweet))
-    }
-}
+import { addTweet } from '../actions/tweet';
 
 class AddTweet extends Component {
     constructor(props) {
         super(props);
-        this.handleSubmit = this.handleSubmit.bind(this)
+        AddTweet.handleSubmit = AddTweet.handleSubmit.bind(this)
     }
 
-    handleSubmit(event) {
+    static handleSubmit(event) {
+        // In order to no reload the page
         event.preventDefault();
         const id = uuidv1();
         const author_name = document.getElementById('author_name').value;
@@ -27,29 +22,35 @@ class AddTweet extends Component {
 
     render() {
         return (
-            <form onSubmit={ this.handleSubmit }>
+            <form onSubmit={ AddTweet.handleSubmit }>
                 <div className="form-group">
-                    <label htmlFor="author">Author</label>
+                    <label htmlFor="author_name">Author</label>
                     <input
                         type="text"
                         className="form-control"
                         id="author_name"
                     />
-                    <label htmlFor="content">Content</label>
+                    <label htmlFor="text">Content</label>
                     <input
                         type="text"
                         className="form-control"
                         id="text"
                     />
-                </div>
                 <button type="submit" className="btn">
                     ADD
                 </button>
+                </div>
             </form>
         )
     }
 }
 
-const AddTweetComponent = connect(null, mapDispatchToProps)(AddTweet);
+function mapDispatchToProps(dispatch) {
+    return {
+        addTweet: (tweet) => dispatch(addTweet(tweet))
+    }
+}
+
+const AddTweetComponent = connect(mapDispatchToProps)(AddTweet);
 
 export default AddTweetComponent
