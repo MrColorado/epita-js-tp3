@@ -8,7 +8,7 @@ function rootReducer(state = { tweets: [] }, action) {
             });
         case actions.REMOVE:
             return Object.assign({}, state, {
-                tweets: state.tweets.filter(tweet => tweet.data.id !== action.data.id)
+                tweets: state.tweets.filter(tweet => tweet.id !== action.data.id)
             });
         case actions.EDIT:
             const updatedTweet = [];

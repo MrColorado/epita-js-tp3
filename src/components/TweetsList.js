@@ -10,7 +10,7 @@ const TweetList = ({tweets}) => {
                 <li key={tweet.id}>
                     <h3>
                         Tweet number : {tweet.id} wrote by {tweet.author_name}
-                        <span onClick={() => store.dispatch(removeTweet({id: tweet.id}))}>X</span>
+                        <button onClick={() => store.dispatch(removeTweet({id: tweet.id}))}>X</button>
                     </h3>
                     <p>
                         {tweet.text}
