@@ -1,4 +1,14 @@
-import * as ReactDOM from "react-dom";
+import React from 'react';
 
-console.log("Hello World !"); // we'll, it's a classic, isn't it ?
-ReactDOM.render(<div>hello, student</div>, document.getElementById('root'))
+import store from './store/index';
+import App from './app';
+
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root')
+);
